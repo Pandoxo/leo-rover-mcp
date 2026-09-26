@@ -1,0 +1,26 @@
+[project]
+name = "leo-rover-mcp"
+version = "0.1.0"
+description = "MCP server that lets an AI agent drive a Leo Rover (ROS 2 / rosbridge), with safety limits and a simulator"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["mcp>=1.10,<2", "websockets>=12", "pillow>=10"]
+
+[project.urls]
+Repository = "https://github.com/Pandoxo/leo-rover-mcp"
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+
+[project.scripts]
+leo-rover-mcp = "leo_rover_mcp.mcp_server:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["leo_rover_mcp"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
