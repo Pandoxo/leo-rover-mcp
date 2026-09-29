@@ -1,17 +1,45 @@
-# leo-rover-mcp
+<div align="center">
 
-An [MCP](https://modelcontextprotocol.io) server that lets an AI agent (Claude Code, Claude Desktop, any MCP
-client) drive a [Leo Rover](https://www.leorover.tech/) — safely, with a camera in the loop, and with a
-built-in simulator for trying things without hardware.
+# 🤖 leo-rover-mcp
 
-It talks to the rover through **rosbridge** (`ws://10.0.0.1:9090`), the same websocket the stock `leo_ui` web
-interface uses. Nothing has to be installed on the rover and ROS is **not** needed on the computer running the
-server.
+**Let an AI agent drive a [Leo Rover](https://www.leorover.tech/) — safely, with a camera in the loop, and with a built-in simulator.**
 
-> **Status:** the rosbridge protocol is tested against a fake server that behaves like LeoOS, and the motion
-> logic in the simulator. Topic names follow the official [Leo Rover ROS API](https://docs.fictionlab.pl/leo-rover/documentation/ros-api)
-> (LeoOS 2.x, ROS 2). Validate on real hardware carefully: first runs with the wheels in the air or on an empty
-> floor, within reach of the power switch.
+![Python](https://img.shields.io/badge/python-%E2%89%A53.10-3776AB?logo=python&logoColor=white)
+![MCP](https://img.shields.io/badge/protocol-MCP-6E56CF)
+![ROS 2](https://img.shields.io/badge/ROS%202-rosbridge-22314E?logo=ros&logoColor=white)
+![Tests](https://img.shields.io/badge/tests-17%20passing-2EA44F)
+
+<img src="docs/sim-demo.gif" alt="Simulated Leo Rover driving a route around obstacles" width="640">
+
+<sub>The simulator: the rover (blue) follows a route through a 6 × 5 m room; the blue line is its odometry trail.</sub>
+
+</div>
+
+## About
+
+`leo-rover-mcp` is an [MCP](https://modelcontextprotocol.io) server that exposes a Leo Rover as a handful of tools
+(`rover_move`, `rover_turn`, `rover_camera`, …) to any MCP client — Claude Code, Claude Desktop and others.
+It talks to the rover over **rosbridge** (`ws://10.0.0.1:9090`), the same websocket the stock `leo_ui` uses, so
+nothing has to be installed on the rover and ROS is **not** needed on your computer.
+
+A safety layer (speed limits, stall detection, watchdog) sits between the agent and the wheels, and a **simulator**
+lets you try the whole loop — look, decide, move — without any hardware.
+
+## Screenshots
+
+In simulation mode `rover_camera` returns a top-down map instead of a photo. This is what the agent sees.
+
+| 1. Start | 2. Mid-route |
+|:---:|:---:|
+| <img src="docs/sim-start.png" width="400"> | <img src="docs/sim-mid-route.png" width="400"> |
+| Rover at the origin, a box directly ahead. | Driving around the box; the trail is the odometry path. |
+
+| 3. Route finished | 4. Stall detection |
+|:---:|:---:|
+| <img src="docs/sim-route.png" width="400"> | <img src="docs/sim-stalled.png" width="400"> |
+| Nine closed-loop moves and turns, all `done`. | Driving into a box ends with `outcome: "stalled"`. |
+
+Regenerate them with `.venv/bin/python scripts/make_screenshots.py`.
 
 **AI agents:** read [AGENTS.md](AGENTS.md) — the operating manual for driving the rover through this server.
 
