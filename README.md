@@ -14,6 +14,7 @@
 <sub>The simulator: the rover (blue) follows a route through a 6 × 5 m room; the blue line is its odometry trail.</sub>
 
 </div>
+[![M8ven Score](https://m8ven.ai/badge/mcp/pandoxo-leo-rover-mcp-xtp26f?v=cec44585f43ae48f29926d7bd847dcfd)](https://m8ven.ai/mcp/pandoxo-leo-rover-mcp-xtp26f?s=readme)
 
 ## About
 
