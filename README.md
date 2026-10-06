@@ -8,14 +8,14 @@
 ![MCP](https://img.shields.io/badge/protocol-MCP-6E56CF)
 ![ROS 2](https://img.shields.io/badge/ROS%202-rosbridge-22314E?logo=ros&logoColor=white)
 ![Tests](https://img.shields.io/badge/tests-17%20passing-2EA44F)
+![M8ven Score](https://m8ven.ai/badge/mcp/pandoxo-leo-rover-mcp-xtp26f?v=cec44585f43ae48f29926d7bd847dcfd)](https://m8ven.ai/mcp/pandoxo-leo-rover-mcp-xtp26f?s=readme)
+
 
 <img src="docs/sim-demo.gif" alt="Simulated Leo Rover driving a route around obstacles" width="640">
 
 <sub>The simulator: the rover (blue) follows a route through a 6 × 5 m room; the blue line is its odometry trail.</sub>
 
 </div>
-[![M8ven Score](https://m8ven.ai/badge/mcp/pandoxo-leo-rover-mcp-xtp26f?v=cec44585f43ae48f29926d7bd847dcfd)](https://m8ven.ai/mcp/pandoxo-leo-rover-mcp-xtp26f?s=readme)
-
 ## About
 
 `leo-rover-mcp` is an [MCP](https://modelcontextprotocol.io) server that exposes a Leo Rover as a handful of tools
